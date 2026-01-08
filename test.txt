@@ -1,1 +1,1 @@
-Test sinkronisasi VSCode dengan GitHub
+Test sinkronisasi VSCode dengan GitHub di D drive
