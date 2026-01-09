@@ -1,66 +1,196 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIPESMA - Sistem Pendaftaran Sidang Mahasiswa
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem informasi untuk pendaftaran dan pengelolaan sidang mahasiswa (KP, Proposal, Skripsi) dengan workflow approval bertingkat.
 
-## About Laravel
+## 🚀 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 👨‍🎓 Dashboard Mahasiswa
+- **Pendaftaran Multi-Jenis**: KP, Proposal, Skripsi
+- **Upload Dokumen**: Multiple file upload dengan tracking individual
+- **Status Real-time**: Monitoring progress approval
+- **Notifikasi**: Update otomatis dari admin/pembimbing
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👨‍💼 Dashboard Admin
+- **Verifikasi Pendaftaran**: Review dan approve/reject
+- **Manajemen Dokumen**: Verifikasi dokumen mahasiswa
+- **Penjadwalan**: Buat jadwal sidang
+- **Pengumuman**: Broadcast info ke mahasiswa
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 👨‍🏫 Dashboard Pembimbing/Dosen
+- **Review Bimbingan**: Lihat mahasiswa bimbingan
+- **Approval Workflow**: Setujui/tolak setelah admin approve
+- **Feedback Dokumen**: Review dan beri catatan
 
-## Learning Laravel
+## 🔄 Workflow System
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+Mahasiswa Daftar → Admin Review → Pembimbing Approve → Jadwal Sidang
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Status Tracking:
+- **Review Admin**: Menunggu verifikasi admin
+- **Review Pembimbing**: Admin approved, menunggu pembimbing
+- **Disetujui**: Siap dijadwalkan
+- **Ditolak**: Ditolak di tahap admin/pembimbing
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Jenis Sidang & Dokumen
 
-## Laravel Sponsors
+### Kerja Praktik (6 Dokumen)
+- Surat Permohonan Seminar KP
+- Surat Selesai Bimbingan
+- Penilaian Perusahaan
+- Draft Laporan KP
+- Kartu Bimbingan KP
+- Surat Bebas Keuangan
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Proposal (4 Dokumen)
+- Surat Permohonan Seminar Proposal
+- Surat Selesai Bimbingan
+- Draft Laporan Proposal
+- Surat Bebas Keuangan
 
-### Premium Partners
+### Skripsi (6 Dokumen)
+- Transkrip Nilai
+- Sertifikat KP
+- Surat Permohonan Sidang Skripsi
+- Surat Selesai Bimbingan
+- Draft Skripsi Lengkap
+- Surat Bebas Keuangan
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 🛠️ Tech Stack
 
-## Contributing
+- **Framework**: Laravel 11
+- **Database**: MySQL
+- **Frontend**: Bootstrap 5, Blade Templates
+- **Authentication**: Custom NIM/NIP based login
+- **File Storage**: Laravel Storage (local/public)
+- **Notifications**: Real-time browser notifications
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ⚙️ Installation
 
-## Code of Conduct
+1. **Clone Repository**
+```bash
+git clone https://github.com/username/sipesma.git
+cd sipesma
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Install Dependencies**
+```bash
+composer install
+npm install
+```
 
-## Security Vulnerabilities
+3. **Environment Setup**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. **Database Configuration**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sidang
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## License
+5. **Run Migrations**
+```bash
+php artisan migrate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6. **Storage Link**
+```bash
+php artisan storage:link
+```
+
+7. **Start Server**
+```bash
+php artisan serve
+```
+
+## 👥 User Roles
+
+### Mahasiswa
+- **Login**: NIM + Password
+- **Access**: `/mahasiswa/dashboard`
+
+### Admin
+- **Login**: NIP + Email + Password
+- **Access**: `/admin/dashboard`
+
+### Pembimbing/Dosen
+- **Login**: NIP + Password
+- **Access**: `/dosen/dashboard`
+
+## 📊 Database Schema
+
+### Core Tables
+- `users` - User management (mahasiswa, admin, dosen)
+- `sidang_registrations` - Pendaftaran sidang dengan workflow
+- `document_verifications` - Tracking dokumen individual
+- `jadwal_sidang` - Penjadwalan sidang
+- `announcements` - Pengumuman
+- `notifications` - Notifikasi real-time
+
+### Workflow Fields
+- `admin_status` - Status review admin
+- `pembimbing_status` - Status review pembimbing
+- `admin_notes` / `pembimbing_notes` - Catatan feedback
+- `admin_reviewed_at` / `pembimbing_reviewed_at` - Timestamp review
+
+## 🎨 UI/UX Features
+
+- **Responsive Design**: Mobile-friendly interface
+- **Orange-Brown Theme**: Consistent color scheme
+- **Interactive Cards**: Clickable dashboard elements
+- **Real-time Updates**: Auto-refresh notifications
+- **Progress Tracking**: Visual status indicators
+- **File Management**: Upload, view, re-upload capabilities
+
+## 🔐 Security Features
+
+- **Role-based Access**: Middleware protection
+- **File Validation**: PDF only, size limits
+- **CSRF Protection**: Form security
+- **Input Sanitization**: XSS prevention
+- **Authentication**: Session-based login
+
+## 📱 Responsive Features
+
+- **Mobile Navigation**: Collapsible navbar
+- **Touch-friendly**: Optimized for mobile devices
+- **Progressive Enhancement**: Works without JavaScript
+- **Fast Loading**: Optimized assets and queries
+
+## 🚀 Deployment
+
+### Production Setup
+1. Set `APP_ENV=production` in `.env`
+2. Configure production database
+3. Set up file storage (S3/local)
+4. Configure web server (Apache/Nginx)
+5. Set up SSL certificate
+6. Configure cron jobs for notifications
+
+### Performance Optimization
+- Enable Laravel caching
+- Optimize database queries
+- Compress assets
+- Use CDN for static files
+
+## 📞 Support
+
+Untuk bantuan teknis atau pertanyaan, hubungi:
+- **Email**: admin@stmikjabar.ac.id
+- **Phone**: +62-xxx-xxxx-xxxx
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+**SIPESMA** - Streamlining Academic Defense Registration Process

@@ -11,7 +11,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->validateCsrfTokens(except: [
+            '/login',
+            '/',
+            '/mahasiswa/register',
+            '/mahasiswa/profile/update'
+        ]);
+        
+        // Remove ValidatePostSize middleware for development
+        $middleware->remove(\Illuminate\Http\Middleware\ValidatePostSize::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
